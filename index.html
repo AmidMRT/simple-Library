@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>my fake library</header>
+    <button class="openPopup">butt</button>
+    <div class="bkcontainer">
+    
+    </div>
+    <dialog>
+        <p>add books here</p>
+        <form class="newbook" method="dialog">
+            <legend for="newname" >name</legend>
+            <input type="text" id="newname" placeholder="some book name" required>
+            <legend for="newauthor" >author</legend>
+            <input type="text" id="newauthor" placeholder="some author name" required>
+            <legend for="newpages" >pages</legend>
+            <input type="number" id="newpages" placeholder="pages" min="5" required>
+            <button id="closePopup">close</button>
+            <button type="reset" id="btnsubmit">submit</button>
+        </form>
+
+    </dialog>
+    <script src="myjs.js"></script>
+</body>
+</html>

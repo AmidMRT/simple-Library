@@ -1,0 +1,8 @@
+.bkcontainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.bkcontainer>div {
+    border: 1px solid black;
+}
