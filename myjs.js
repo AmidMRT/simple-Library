@@ -4,10 +4,8 @@ function Book(name, author, pages) {
   this.name = name;
   this.author = author;
   this.pages = pages;
+  this.isread = true;
 }
-
-// const book1 = new Book('harry', 'jk', 100);
-// myLibrary.push(book1);
 
 const cont = document.querySelector(".bkcontainer");
 const openPopup = document.querySelector('.openPopup');
@@ -17,29 +15,14 @@ const closePopup = document.querySelector('#closePopup');
 const newName = document.querySelector('#newname');
 const newAuthor = document.querySelector('#newauthor');
 const newPages = document.querySelector('#newpages');
+const bookForm = document.querySelector('.newbook');
+const readStatus = document.querySelector('#readStatus');
 
 function addBookToLibrary() {
   let newBook = new Book (newName.value, newAuthor.value, newPages.value);
+  newBook.isread = readStatus.checked;
   myLibrary.push(newBook);
 }
-
-myLibrary.forEach((item)=> {
-  let newCard = document.createElement('div');
-  cont.appendChild(newCard);
-  let namep = document.createElement('p');
-  newCard.appendChild(namep);
-  let booktxt = document.createTextNode(`book: ${item.name}`);
-  namep.appendChild(booktxt);
-  autp = document.createElement('p');
-  newCard.appendChild(autp);
-  let authortxt = document.createTextNode(`author: ${item.author}`);
-  autp.appendChild(authortxt);
-  let rmbtn = document.createElement('button');
-  newCard.appendChild(rmbtn);
-  let btntxt = document.createTextNode('remove');
-  rmbtn.appendChild(btntxt);
-
-});
 
 
 function showBooks () {
@@ -47,43 +30,45 @@ function showBooks () {
   myLibrary.forEach((item)=> {
       let newCard = document.createElement('div');
       cont.appendChild(newCard);
-      let namep = document.createElement('p');
-      newCard.appendChild(namep);
-      let booktxt = document.createTextNode(`book: ${item.name}`);
-      namep.appendChild(booktxt);
-      autp = document.createElement('p');
-      newCard.appendChild(autp);
-      let authortxt = document.createTextNode(`author: ${item.author}`);
-      autp.appendChild(authortxt);
-      let rmbtn = document.createElement('button');
-      newCard.appendChild(rmbtn);
-      let btntxt = document.createTextNode('remove');
-      rmbtn.appendChild(btntxt);
-}); }
+      newCard.innerHTML = `
+      <h2>${item.name}</h2>
+      <p>${item.author}</p>
+      <p>${item.pages} pages</p>
+      <div>
+      <button class="status">${item.isread ? "read" : "not read"}</button>
+      <button class="delete">remove</button>
+      </div>
+      `
+  }) 
+
+  document.querySelectorAll(".delete").forEach((button, index) => {button.addEventListener("click", (e)=>{
+    myLibrary.splice(index, 1);
+    showBooks();
+  })})
+
+  document.querySelectorAll(".status").forEach((button, index) => {button.addEventListener("click", ()=>{
+    readToggle(myLibrary[index]);
+    button.innerText = myLibrary[index].isread ? "read" : "not read";
+  })})
+};
+
+function readToggle (Book) {
+  Book.isread = !(Book.isread);
+}
 
 openPopup.addEventListener('click', ()=> {
-    dialog.showModal();    
+  dialog.showModal();    
 });
-
 
 closePopup.addEventListener('click', () => {
   dialog.close();
 });
 
-subButton.addEventListener('click', ()=>{
+subButton.addEventListener('click', (e)=>{
+  // e.preventDefault();
+
   addBookToLibrary();
   showBooks();
-  console.log(myLibrary);
+  bookForm.reset();
   dialog.close();
-  let removebtnNodes = cont.querySelectorAll('button');
-  let rmbtns = Array.from(removebtnNodes);
-  rmbtns.forEach((btn)=> {
-    btn.addEventListener('click', ()=>{
-      let rmIndex = rmbtns.indexOf(btn);
-      console.log(rmIndex);
-      myLibrary.splice(rmIndex, 1);
-      console.log(myLibrary);
-      showBooks();
-    })
-  })
 });
