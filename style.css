@@ -4,5 +4,58 @@
 }
 
 .bkcontainer>div {
-    border: 1px solid black;
+    border: none;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: antiquewhite;
+    border-radius: 10%;
+    padding: 20px;
+    box-shadow: 5px 10px 30px rgb(138, 138, 138) ;
+}
+
+.header {
+    background-color: rgb(250, 209, 155);
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.openPopup {
+    margin: 30px auto 10px;
+    background-color: azure;
+    border-radius: 5%;
+    border-color: bisque ;
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+}
+
+input {
+    margin: 5px auto 10px;
+}
+
+.read {
+    display: flex;
+    justify-content:space-between;
+    margin: auto 0 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#readStatus {
+    margin: 0;
+}
+
+.status, .delete {
+    background-color: beige;
+    border-radius: 15%;
+    border: 1px solid rgb(160, 160, 160);
+    padding: 5px;
 }

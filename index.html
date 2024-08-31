@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>my fake library</header>
-    <button class="openPopup">butt</button>
+    <div class="header">
+        <header>my fake library</header>
+        <button class="openPopup">Add Book</button>
+    </div>
     <div class="bkcontainer">
     
     </div>
@@ -21,8 +23,14 @@
             <input type="text" id="newauthor" placeholder="some author name" required>
             <legend for="newpages" >pages</legend>
             <input type="number" id="newpages" placeholder="pages" min="5" required>
-            <button id="closePopup">close</button>
-            <button type="reset" id="btnsubmit">submit</button>
+            <div class="read">
+                <legend for="readStatus">read</legend>
+                <input type="checkbox" id="readStatus" unchecked>
+            </div>
+            <div class="buttons">
+                <button id="closePopup">close</button>
+                <button type="submit" id="btnsubmit">submit</button>
+            </div>
         </form>
 
     </dialog>
